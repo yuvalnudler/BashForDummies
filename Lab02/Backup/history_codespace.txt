@@ -1,0 +1,18 @@
+    1  mkdir Backup
+    2  cp *.log Backup
+    3  pwd
+    4  cd lab02
+    5  pwd
+    6  cd lab02
+    7  cd Lab02/
+    8  mkdir Backup
+    9  cp *.log Backup
+   10  touch ../history.txt
+   11  mv ../history.txt Backup/
+   12  cd ..
+   13  rm -r Backup/
+   14  cd Lab02/
+   15  mv Backup/history.txt Backup/history_codespace.txt 
+   16  PWD
+   17  pwd
+   18  history >> Backup/history_codespace.txt
