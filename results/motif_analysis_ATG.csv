@@ -1,0 +1,6 @@
+sequence_id,sequence_length,motif,count,frequency
+sequence_001,174,ATG,3,0.01744186046511628
+sequence_002,162,ATG,0,0.0
+sequence_003,135,ATG,0,0.0
+sequence_004,135,ATG,0,0.0
+sequence_005,132,ATG,0,0.0

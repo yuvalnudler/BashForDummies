@@ -1,0 +1,54 @@
+Stage C - FASTA Analysis with Python
+=====================================
+
+Analysis Summary
+----------------
+Date: January 29, 2026
+FASTA File: data/sequences/sample_sequences.fasta
+Total Sequences: 5
+
+Motif 1: ATG (Start Codon)
+- Total occurrences: 3
+- Sequences analyzed: 5
+- Output: results/motif_analysis_ATG.csv
+- Visualization: results/motif_histogram_ATG.png
+
+Motif 2: GC (GC-rich regions)
+- Total occurrences: 122
+- Sequences analyzed: 5
+- Output: results/motif_analysis_GC.csv
+- Visualization: results/motif_histogram_GC.png
+
+Sequence Details
+----------------
+1. sequence_001 (174 bp): ATG=3, GC=6
+2. sequence_002 (162 bp): ATG=0, GC=35
+3. sequence_003 (135 bp): ATG=0, GC=15
+4. sequence_004 (135 bp): ATG=0, GC=66
+5. sequence_005 (132 bp): ATG=0, GC=0
+
+CSV Output Format
+-----------------
+Columns: sequence_id, sequence_length, motif, count, frequency
+- sequence_id: Name of the sequence from FASTA header
+- sequence_length: Length of sequence in base pairs
+- motif: The motif searched for (uppercase)
+- count: Number of motif occurrences
+- frequency: Frequency = count / (sequence_length - motif_length + 1)
+
+Histogram Visualization
+------------------------
+Two PNG files generated with matplotlib:
+- motif_histogram_ATG.png: Bar chart of ATG occurrences per sequence
+- motif_histogram_GC.png: Bar chart of GC occurrences per sequence
+
+Files show sequence IDs on x-axis and motif count on y-axis with value labels.
+
+Script Features
+---------------
+- FASTA file parsing with header and sequence extraction
+- Case-insensitive motif matching
+- CSV output with frequency calculation
+- Professional histogram generation with matplotlib
+- Error handling for missing files
+- Command-line argument validation
