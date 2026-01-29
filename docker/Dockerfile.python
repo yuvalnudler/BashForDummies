@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir matplotlib pandas
 WORKDIR /app
 
 # Copy the FASTA analysis script
-COPY fasta_analysis.py /app/fasta_analysis.py
+COPY scripts/python/fasta_analysis.py /app/fasta_analysis.py
 
 # Copy FASTA data
 COPY data/sequences /app/data/sequences
