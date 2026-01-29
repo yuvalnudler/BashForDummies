@@ -1,0 +1,73 @@
+Stage D - Python Container
+===========================
+
+Docker Image Details
+--------------------
+Image: fasta-analysis:latest
+Base Image: python:3.11-slim
+Size: 368 MB
+
+Dependencies Installed
+- matplotlib: For histogram visualization
+- pandas: For data processing (optional but included)
+
+Build Command
+-------------
+docker build -t fasta-analysis:latest .
+
+Run Commands
+------------
+
+1. Default execution (ATG motif):
+   docker run --rm -v $(pwd)/results:/app/results fasta-analysis:latest
+
+2. Custom motif analysis (GC):
+   docker run --rm -v $(pwd)/results:/app/results fasta-analysis:latest \
+     python3 fasta_analysis.py data/sequences/sample_sequences.fasta GC results
+
+3. Interactive mode:
+   docker run --rm -it -v $(pwd)/results:/app/results fasta-analysis:latest /bin/bash
+
+Container Environment
+---------------------
+Working Directory: /app
+Data Location: /app/data/sequences
+Output Location: /app/results
+Python Version: 3.11
+
+Volume Mapping
+--------------
+-v /workspaces/BashForDummies/results:/app/results
+  Maps local results directory to container for output persistence
+
+Test Results - Verification
+----------------------------
+✓ ATG Motif Analysis:
+  - Container Output: 3 occurrences (matches local execution)
+  - CSV Generated: motif_analysis_ATG.csv
+  - PNG Generated: motif_histogram_ATG.png (100 KB)
+
+✓ GC Motif Analysis:
+  - Container Output: 122 occurrences (matches local execution)
+  - CSV Generated: motif_analysis_GC.csv
+  - PNG Generated: motif_histogram_GC.png (105 KB)
+
+Key Verification Points
+-----------------------
+1. Container builds successfully without errors
+2. All dependencies (matplotlib, pandas) installed
+3. FASTA data copied correctly into container
+4. Analysis script executes within container
+5. Output files generated with correct sizes
+6. Results match local Python execution exactly
+7. CSV and PNG outputs accessible on host system
+8. Container runs with --rm flag (auto-cleanup)
+
+Dockerfile Features
+-------------------
+- Minimal Python base image (3.11-slim)
+- No cache for pip install (smaller final image)
+- PYTHONUNBUFFERED=1 for immediate output
+- Pre-created output directories
+- Default command configured for ATG analysis
+- Compatible with custom command overrides
