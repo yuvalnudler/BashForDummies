@@ -1,0 +1,32 @@
+R Analysis Summary Report
+=========================
+Generated: 2026-01-29 07:55:05 
+
+Input CSV: data/motif_analysis_ATG.csv 
+Motif: ATG 
+R Version: 4.3.2 
+
+Data Summary:
+- Total Sequences: 5 
+- Total Motif Count: 3 
+- Average Count: 0.6 
+- Median Count: 0 
+- Min Count: 0 
+- Max Count: 3 
+- Std Dev: 1.34 
+
+Sequence Details:
+-----------------
+ 1. sequence_001: count=  3, freq=0.0174, length=174
+ 2. sequence_002: count=  0, freq=0.0000, length=162
+ 3. sequence_003: count=  0, freq=0.0000, length=135
+ 4. sequence_004: count=  0, freq=0.0000, length=135
+ 5. sequence_005: count=  0, freq=0.0000, length=132
+
+
+Generated Visualizations:
+- r_motif_barplot_ ATG .png
+- r_motif_frequency_ ATG .png
+- r_motif_combined_ ATG .png
+- r_motif_pie_ ATG .png
+- r_analysis_table_ ATG .csv

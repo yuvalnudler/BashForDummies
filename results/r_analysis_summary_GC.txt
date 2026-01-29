@@ -1,0 +1,32 @@
+R Analysis Summary Report
+=========================
+Generated: 2026-01-29 07:55:40 
+
+Input CSV: data/motif_analysis_GC.csv 
+Motif: GC 
+R Version: 4.3.2 
+
+Data Summary:
+- Total Sequences: 5 
+- Total Motif Count: 122 
+- Average Count: 24.4 
+- Median Count: 15 
+- Min Count: 0 
+- Max Count: 66 
+- Std Dev: 26.76 
+
+Sequence Details:
+-----------------
+ 1. sequence_001: count=  6, freq=0.0347, length=174
+ 2. sequence_002: count= 35, freq=0.2174, length=162
+ 3. sequence_003: count= 15, freq=0.1119, length=135
+ 4. sequence_004: count= 66, freq=0.4925, length=135
+ 5. sequence_005: count=  0, freq=0.0000, length=132
+
+
+Generated Visualizations:
+- r_motif_barplot_ GC .png
+- r_motif_frequency_ GC .png
+- r_motif_combined_ GC .png
+- r_motif_pie_ GC .png
+- r_analysis_table_ GC .csv

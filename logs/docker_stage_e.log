@@ -1,0 +1,112 @@
+Stage E - R Container
+====================
+
+Docker Image Details
+--------------------
+Image: fasta-analysis-r:latest
+Base Image: rocker/r-base:4.3.2
+Size: ~2.5 GB (due to R base image)
+R Version: 4.3.2
+
+Dependencies Installed
+- ggplot2: Advanced data visualization
+- gridExtra: Grid graphics utilities
+- grid: Grid graphics (base package)
+
+Build Command
+-------------
+docker build -f Dockerfile.r -t fasta-analysis-r:latest .
+
+Run Commands
+------------
+
+1. Default execution (ATG motif):
+   docker run --rm -v $(pwd)/results:/app/results fasta-analysis-r:latest
+
+2. Custom motif analysis (GC):
+   docker run --rm -v $(pwd)/results:/app/results fasta-analysis-r:latest \
+     Rscript fasta_analysis.R data/motif_analysis_GC.csv results GC
+
+3. Interactive R console:
+   docker run --rm -it -v $(pwd)/results:/app/results fasta-analysis-r:latest R
+
+Container Environment
+---------------------
+Working Directory: /app
+Data Location: /app/data/
+Output Location: /app/results
+R Version: 4.3.2
+
+Test Results - Verification
+----------------------------
+
+✓ ATG Motif Analysis:
+  - Input CSV: motif_analysis_ATG.csv
+  - Total Sequences: 5
+  - Total Occurrences: 3
+  - Generated Files:
+    * r_motif_barplot_ATG.png (100 KB) - Bar plot with frequency colors
+    * r_motif_frequency_ATG.png (138 KB) - Frequency distribution plot
+    * r_motif_combined_ATG.png (119 KB) - Combined bar + line chart
+    * r_motif_pie_ATG.png (88 KB) - Pie chart of contribution
+    * r_analysis_table_ATG.csv - Summary table
+    * r_analysis_summary_ATG.txt - Text report
+
+✓ GC Motif Analysis:
+  - Input CSV: motif_analysis_GC.csv
+  - Total Sequences: 5
+  - Total Occurrences: 122
+  - Generated Files:
+    * r_motif_barplot_GC.png (100 KB)
+    * r_motif_frequency_GC.png (170 KB)
+    * r_motif_combined_GC.png (124 KB)
+    * r_motif_pie_GC.png (121 KB)
+    * r_analysis_table_GC.csv
+    * r_analysis_summary_GC.txt
+
+Key Verification Points
+-----------------------
+1. ✓ R container builds successfully
+2. ✓ All R packages installed (ggplot2, gridExtra)
+3. ✓ Python CSV output correctly read by R script
+4. ✓ Multiple visualization types generated
+5. ✓ Both ATG and GC motifs analyzed
+6. ✓ Summary reports generated
+7. ✓ Output files accessible on host system
+8. ✓ Container runs with --rm flag (auto-cleanup)
+9. ✓ Volume mounting persists results to host
+
+R Script Features
+-----------------
+- Reads CSV from Python analysis
+- Command-line argument handling (CSV, output dir, motif name)
+- Data validation and error handling
+- Statistical summary generation
+- Multiple visualization types:
+  * Bar plot with frequency-based coloring
+  * Frequency distribution with point/line plot
+  * Combined bar and line chart
+  * Pie chart (for non-zero counts)
+- Summary statistics (mean, median, std dev, min, max)
+- Text report generation
+- CSV output table
+
+Visualizations Created
+----------------------
+1. Bar Plot: Shows count per sequence with color gradient by frequency
+2. Frequency Plot: Point and line plot showing frequency distribution
+3. Combined Plot: Dual-axis visualization with bars and line
+4. Pie Chart: Contribution breakdown by sequence
+5. Summary Table: CSV with sequence details
+
+Output Files Generated
+-----------------------
+For each motif analysis, R generates:
+- 4 PNG visualizations (300 DPI)
+- 1 CSV summary table
+- 1 Text report with statistics
+
+Total R outputs (both motifs):
+- 8 PNG files (1.2 MB)
+- 2 CSV files
+- 2 text reports
